@@ -7,7 +7,7 @@ builder:
   context: .
   buildArgs:
     JFROG_BASE_REPOSITORY: aichor-dev-docker
-    JFROG_URL: artifactory.bion.tech
+    JFROG_URL: artifactory.bion.tech 
 
 spec:  
   operator: jax
