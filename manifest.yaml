@@ -17,7 +17,7 @@ spec:
   tensorboard:
     enabled: true
 
-  types:
+  types: 
     Worker:
       count: 4
       resources:
