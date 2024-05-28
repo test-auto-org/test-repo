@@ -9,7 +9,7 @@ builder:
     JFROG_BASE_REPOSITORY: aichor-dev-docker
     JFROG_URL: artifactory.bion.tech
 
-spec: 
+spec:  
   operator: jax  r
   image: image
   command: "python3 -u main.py --operator=jax --sleep=30 --tb-write=true" 
