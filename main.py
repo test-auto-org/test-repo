@@ -3,7 +3,7 @@ import time
  
 from src.operators.jax import jaxop
 from src.operators.ray import rayop 
-from src.operators.tf import tfop
+from src.operators.tf import tfop 
 
 from src.utils.tensorboard import dummy_tb_write
  
