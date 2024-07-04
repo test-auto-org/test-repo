@@ -1,4 +1,3 @@
-# Fix the hash of the base image as the latest pushed image under this tag is broken, cf. #1235
 ARG JFROG_BASE_REPOSITORY
 ARG JFROG_URL
 
