@@ -1,31 +1,31 @@
-kind: AIchorManifest
+kind: AIchorManifest 
 apiVersion: 0.2.2
 
 builder:
   image: image
-  dockerfile: ./Dockerfile  
-  context: .
-  buildArgs:
+  dockerfile: ./dockerfiles/Dockerfile
+  context: .  
+  buildArgs: 
     JFROG_BASE_REPOSITORY: aichor-dev-docker
-    JFROG_URL: artifactory.bion.tech  
- 
-spec:  
-  operator: jax
-  image: image
-  command: "python3 -u main.py --operator=jax --sleep=30 --tb-write=true" 
+    JFROG_URL: artifactory.bion.tech 
+
+spec: 
+  operator: tf
+  image: image  
+  command: "python3 -u main.py --operator=tf --sleep=250 --tb-write=true"  
  
   tensorboard:
     enabled: true
-
-  types: 
+   
+  types:
     Worker:
-      count: 4
+      count: 1 
       resources:
         cpus: 1
         ramRatio: 2 
-        shmSizeGB: 0 
+        shmSizeGB: 0
         accelerators: # optional
-          gpu:
-            count: 0
-            type: gpu
-            product: nvidia-tesla-t4
+          gpu: 
+            count: 0   
+            type: gpu 
+            product: a10g
