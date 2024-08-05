@@ -27,3 +27,5 @@ spec:
         accelerators: # optional
           gpu: 
             count: 0   
+            type: gpu 
+            product: a10g
