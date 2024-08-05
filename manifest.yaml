@@ -1,31 +1,43 @@
-kind: AIchorManifest 
+kind: AIchorManifest
 apiVersion: 0.2.2
 
 builder:
   image: image
-  dockerfile: ./Dockerfile
+  dockerfile: ./dockerfiles/ray.Dockerfile
   context: .  
   buildArgs: 
     JFROG_BASE_REPOSITORY: aichor-dev-docker
     JFROG_URL: artifactory.bion.tech 
 
-spec: 
-  operator: tf
-  image: image  
-  command: "python3 -u main.py --operator=tf --sleep=250 --tb-write=true"  
- 
+spec:
+  operator: ray 
+  image: image
+  command: "python3 -u main.py --operator=ray --sleep=300 --tb-write=True"
+
   tensorboard:
     enabled: true
-   
-  types:
-    Worker:
-      count: 1 
+
+  types: 
+    Head:
       resources:
         cpus: 1
         ramRatio: 2 
-        shmSizeGB: 0
         accelerators: # optional
-          gpu: 
-            count: 0   
-            type: gpu 
+          gpu:
+            count: 0
             product: a10g
+            type: gpu
+
+    Job:
+      resources:
+        cpus: 1
+        ramRatio: 2
+        shmSizeGB: 0
+
+    Workers:
+      - name: cpu-workers
+        count: 128
+        resources:
+          cpus: 1
+          ramRatio: 2
+          shmSizeGB: 0
