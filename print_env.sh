@@ -7,7 +7,7 @@ print_test() {
         echo "This is a test: $i"
         sleep 1 
         usleep "$((interval * 1000000))"
-    done 
+    done  
 }
 
 print_test
