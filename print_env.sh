@@ -5,7 +5,7 @@ print_test() {
 
     for ((i = 1; i <= iterations; i++)); do
         echo "This is a test: $i"
-        sleep 1
+        sleep 1 
         usleep "$((interval * 1000000))"
     done 
 }
