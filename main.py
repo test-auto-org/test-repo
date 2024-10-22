@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    print(f"using {args.operator} operator") 
+    print(f"using {args.operator} operator")  
 
     if args.operator == "ray":
         rayop() 
