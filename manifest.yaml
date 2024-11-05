@@ -13,7 +13,7 @@ spec:
   operator: tf  
   image: image   
   command: "python3 -u main.py --operator=tf --sleep=250 --tb-write=true"  
-  
+   
   tensorboard: 
     enabled: true
     
