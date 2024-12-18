@@ -20,7 +20,7 @@ spec:
   types: 
     Worker: 
       count: 1  
-      resources:
+      resources: 
         cpus: 1 
         ramRatio: 2 
         shmSizeGB: 0
