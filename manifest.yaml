@@ -6,8 +6,8 @@ builder:
   dockerfile: ./Dockerfile
   context: .   
   buildArgs:  
-    JFROG_BASE_REPOSITORY: aichor-dev-docker 
-    JFROG_URL: artifactory.bion.tech  
+    JFROG_BASE_REPOSITORY: aichor-dev-docker
+    JFROG_URL: artifactory.bion.tech
 
 spec:    
   operator: tf   
