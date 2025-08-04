@@ -9,23 +9,24 @@ builder:
     JFROG_BASE_REPOSITORY: aichor-dev-docker
     JFROG_URL: artifactory.bion.tech
 
-spec:    
-  operator: tf   
-  image: image   
-  command: "python3 -u main.py --operator=tf --sleep=250 --tb-write=true"  
-   
-  tensorboard: 
+spec:
+  operator: jobset
+  image: image
+  command: "python3 -u main.py --operator=jobset --sleep=300 --tb-write=True"
+
+  tensorboard:
     enabled: true
-    
-  types: 
-    Worker: 
-      count: 1  
-      resources: 
-        cpus: 1 
-        ramRatio: 2 
+
+  types:
+    master:
+      count: 1
+      resources:
+        cpus: 1
+        ramRatio: 2
         shmSizeGB: 0
-        accelerators: # optional
-          gpu: 
-            count: 0   
-            type: gpu 
-            product: a10g
+    worker:
+      count: 1
+      resources:
+        cpus: 1
+        ramRatio: 2
+        shmSizeGB: 0
