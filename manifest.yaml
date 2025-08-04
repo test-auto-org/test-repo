@@ -10,7 +10,7 @@ builder:
     JFROG_URL: artifactory.bion.tech
 
 spec:
-  operator: jobset
+  operator: jobset 
   image: image
   command: "python3 -u main.py --operator=jobset --sleep=300 --tb-write=True"
 
@@ -30,3 +30,4 @@ spec:
         cpus: 1
         ramRatio: 2
         shmSizeGB: 0
+
