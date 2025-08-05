@@ -3,8 +3,6 @@ import time
 
 from src.operators.jax import jaxop
 from src.operators.ray import rayop
-from src.operators.pytorch import pytorchop
-from src.operators.xgboost import xgboostop
 from src.operators.jobset import jobsetop
 
 OPERATOR_TABLE = {
@@ -30,3 +28,4 @@ if __name__ == "__main__":
     if args.sleep > 0:
         print(f"sleeping for {args.sleep}s before exiting")
         time.sleep(args.sleep)
+
