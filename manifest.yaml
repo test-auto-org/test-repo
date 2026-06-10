@@ -9,7 +9,7 @@ builder:
     JFROG_BASE_REPOSITORY: aichor-dev-docker
     JFROG_URL: artifactory.bion.tech
 
-spec:
+spec: 
   operator: kuberay
   image: image
   command: "python3 -u main.py --operator=kuberay --sleep=300 --tb-write=True"
