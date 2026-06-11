@@ -1,28 +1,31 @@
+# yaml-language-server: $schema=https://instadeep.aichor.ai/schema/latest/manifest.schema.json
+
 kind: AIchorManifest
 apiVersion: 0.2.2
 
 builder:
   image: image
-  context: pytorch-demo
-  dockerfile: ./Dockerfile
+  context: smoke-test # smoke-test folder
+  dockerfile: ./build/Dockerfile
 
 spec:
-  operator: pytorch
+  operator: jobset
   image: image
-  command: "python3 src/main.py"
+  command: "python3 -u main.py --operator=jobset --sleep=300 --tb-write=True"
 
   tensorboard:
     enabled: true
 
   types:
-    worker:
-      count: 3
+    master:
+      count: 1
       resources:
-        cpus: 4
-        ramRatio: 4
+        cpus: 1
+        ramRatio: 2
         shmSizeGB: 0
-        accelerators: # optional
-          gpu:
-            count: 1
-            type: gpu
-            product: a10g
+    worker:
+      count: 1
+      resources:
+        cpus: 1
+        ramRatio: 2
+        shmSizeGB: 0
