@@ -2,36 +2,22 @@ kind: AIchorManifest
 apiVersion: 0.2.2
 
 builder:
-  image: raytune-pong
-  context: raytune-pong # raytune-pong folder
+  image: xgboost-demo
+  context: xgboost-demo
   dockerfile: ./Dockerfile
 
 spec:
-  operator: kuberay
-  image: raytune-pong
-  command: "python main.py"
+  operator: xgboost
+  image: xgboost-demo
+  command: "python src/train.py"
 
-  debug:
-    jupyter: false
-
-  tensorboard: # optional, disabled by default
+  tensorboard:
     enabled: true
 
   types:
-    Head:
+    worker:
+      count: 2
       resources:
-        cpus: 6
-        ramRatio: 6
-        accelerators: # optional
-          gpu:
-            count: 1
-            product: a10g
-            type: gpu
-
-    Workers:
-      - name: cpu-workers
-        count: 5
-        resources:
-          cpus: 6
-          ramRatio: 2
-          shmSizeGB: 0
+        cpus: 2
+        ramRatio: 2
+        shmSizeGB: 0
