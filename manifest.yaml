@@ -2,36 +2,31 @@ kind: AIchorManifest
 apiVersion: 0.2.2
 
 builder:
-  image: raytune-pong
-  context: raytune-pong # raytune-pong folder
-  dockerfile: ./Dockerfile
+  image: image
+  context: smoke-test # smoke-test folder
+  dockerfile: ./build/ray.Dockerfile # need ray installed
 
 spec:
   operator: kuberay
-  image: raytune-pong
-  command: "python main.py"
+  image: image
+  command: "python3 -u main.py --operator=kuberay --sleep=300 --tb-write=True"
 
   debug:
     jupyter: false
 
-  tensorboard: # optional, disabled by default
+  tensorboard:
     enabled: true
 
   types:
     Head:
       resources:
-        cpus: 6
-        ramRatio: 6
-        accelerators: # optional
-          gpu:
-            count: 1
-            product: nvidia-tesla-t4
-            type: gpu
+        cpus: 1
+        ramRatio: 2
 
     Workers:
       - name: cpu-workers
-        count: 5
+        count: 1
         resources:
-          cpus: 6
+          cpus: 1
           ramRatio: 2
           shmSizeGB: 0
