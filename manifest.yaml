@@ -22,8 +22,13 @@ spec:
   types:
     Head:
       resources:
-        cpus: 1
-        ramRatio: 2
+        cpus: 6
+        ramRatio: 6
+        accelerators: # optional
+          gpu:
+            count: 1
+            product: nvidia-tesla-t4
+            type: gpu
 
     Workers:
       - name: cpu-workers
