@@ -11,7 +11,7 @@ spec:
   image: image
   command: "python3 -u main.py --operator=kuberay --sleep=300 --tb-write=True"
 
-  engineName: gcp-engine
+  engineName: aws-engine
 
   debug:
     jupyter: false
@@ -27,7 +27,7 @@ spec:
         accelerators: # optional
           gpu:
             count: 1
-            product: nvidia-tesla-t4
+            product: a10g
             type: gpu
 
     Workers:
