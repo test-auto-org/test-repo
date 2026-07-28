@@ -1,37 +1,32 @@
+
+# yaml-language-server: $schema=https://instadeep.aichor.ai/schema/latest/manifest.schema.json
+
 kind: AIchorManifest
 apiVersion: 0.2.2
 
 builder:
-  image: raytune-pong
-  context: raytune-pong # raytune-pong folder
-  dockerfile: ./Dockerfile
+  image: image
+  context: smoke-test # smoke-test folder
+  dockerfile: ./build/Dockerfile
 
 spec:
-  operator: kuberay
-  image: raytune-pong
-  command: "python main.py"
+  operator: jobset
+  image: image
+  command: "python3 -u main.py --operator=jobset --sleep=300 --tb-write=True"
 
-  debug:
-    jupyter: false
-
-  tensorboard: # optional, disabled by default
+  tensorboard:
     enabled: true
 
   types:
-    Head:
+    master:
+      count: 1
       resources:
-        cpus: 6
-        ramRatio: 6
-        accelerators: # optional
-          gpu:
-            count: 1
-            product: nvidia-tesla-t4
-            type: gpu
-
-    Workers:
-      - name: cpu-workers
-        count: 5
-        resources:
-          cpus: 6
-          ramRatio: 2
-          shmSizeGB: 0
+        cpus: 1
+        ramRatio: 2
+        shmSizeGB: 0
+    worker:
+      count: 1
+      resources:
+        cpus: 1
+        ramRatio: 2
+        shmSizeGB: 0
